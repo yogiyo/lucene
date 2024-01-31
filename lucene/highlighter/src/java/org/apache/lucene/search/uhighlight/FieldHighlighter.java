@@ -191,8 +191,8 @@ public class FieldHighlighter {
     maybeAddPassage(passageQueue, passageScorer, passage, contentLength);
 
     Passage[] passages = passageQueue.toArray(new Passage[passageQueue.size()]);
-    // sort in ascending order
-    Arrays.sort(passages, Comparator.comparingInt(Passage::getStartOffset));
+    // sort in score descending order
+    Arrays.sort(passages, Comparator.comparing(Passage::getScore).reversed());
     return passages;
   }
 
